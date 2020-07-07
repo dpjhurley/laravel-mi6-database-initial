@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MI6</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+ 
+    <title>MI6 system</title>
 </head>
 <body>
+    <nav>
+        TOPMENU
+    </nav>
  
-    <div id="app"></div>
- 
-    <script src="{{ mix('js/index.js') }}"></script>
+    @yield('content')
  
 </body>
 </html>

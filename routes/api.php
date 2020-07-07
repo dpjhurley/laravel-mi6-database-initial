@@ -18,4 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/person', 'Api\PersonController@index');
+Route::group(['middleware' => ['auth:api']], function ($group) {
+ 
+    // define your protected routes in here
+    Route::get('/person', 'Api\PersonController@index');
+    Route::get('/missions', 'Api\MissionController@index');
+    Route::post('/missions/attach', 'Api\MissionController@addMission');
+    Route::post('/missions/detach', 'Api\MissionController@removeMission');
+});
+
+
+Route::post('/login', 'Api\LoginController@login');
